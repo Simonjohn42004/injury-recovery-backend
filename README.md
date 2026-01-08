@@ -39,3 +39,14 @@ npm install @nestjs/websockets @nestjs/platform-socket.io
 npm install class-validator class-transformer
 npm install socket.io
 npm install --save-dev @types/socket.io
+
+
+| Method | Endpoint                | Description                | Request Body | Response                             |
+| ------ | ----------------------- | -------------------------- | ------------ | ------------------------------------ |
+| POST   | /injury-recovery/angles | Receive & broadcast angles | AnglesDto    | { status: 'received', data: angles } |
+
+
+| Direction       | Event                         | Payload   | Description                                         |
+| --------------- | ----------------------------- | --------- | --------------------------------------------------- |
+| Server → Client | angles-update                 | AnglesDto | Broadcasts received angles to ALL connected clients |
+| Server Logs     | Client connected/disconnected | client.id | Connection tracking                                 |
